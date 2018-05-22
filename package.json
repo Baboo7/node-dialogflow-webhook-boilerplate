@@ -1,0 +1,15 @@
+{
+  "name": "cryptobot",
+  "version": "1.0.0",
+  "description": "A brain-dead simple CryptoBot",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Baboo7",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4"
+  }
+}
