@@ -4,6 +4,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const config = require('./configs/config')
+const logger = require('./logger')
 
 // Require the module webhook/index.js
 const webhook = require('./webhook')
@@ -23,4 +24,4 @@ app.post('/webhook', webhook)
 
 // The server is now listening on the port 8080
 app.listen(config.PORT)
-console.log('info', `server listening on port ${config.PORT}`)
+logger.log('info', `server listening on port ${config.PORT}`)
