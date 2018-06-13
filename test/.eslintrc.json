@@ -1,0 +1,14 @@
+{
+	"extends": "standard",
+  "globals": {
+    "before": true,
+    "beforeEach": true,
+    "afterEach": true,
+    "after": true,
+    "describe": true,
+    "it": true
+  },
+	"rules": {
+		"no-mixed-spaces-and-tabs": ["error", "smart-tabs"]
+	}
+}

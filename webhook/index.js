@@ -1,14 +1,16 @@
 'use strict'
 
-// Load the fetchPriceCryptoCurrency handler
-let corefetchPriceCryptoCurrency = require('./handlers/core/fetchPriceCryptoCurrency')
+const path = require('path')
+const system = require('../utils/system')
 
-// Add the handler to the handlers object
-// The keys are the name of the actions
-// The values are the handlers
-let handlers = {
-  'core/fetchPriceCryptoCurrency': corefetchPriceCryptoCurrency
-}
+// Load the handlers from the handler folder
+let handlers = {}
+system.getFoldersNameInFolder(path.join(__dirname, 'handlers')).forEach(folderName => {
+  let categorizedModules = system.loadModulesFromFolder(path.join(__dirname, 'handlers', folderName))
+  Object.keys(categorizedModules).forEach(moduleName => {
+    handlers[`${folderName}/${moduleName}`] = categorizedModules[moduleName]
+  })
+})
 
 // Function that selects the appropriate handler based on the action triggered by the agent
 const interactionHandler = interaction => {
