@@ -1,11 +1,12 @@
 'use strict'
 
-let express = require('express')
-let app = express()
-let bodyParser = require('body-parser')
+const express = require('express')
+const app = express()
+const bodyParser = require('body-parser')
+const config = require('./configs/config')
 
 // Require the module webhook/index.js
-let webhook = require('./webhook')
+const webhook = require('./webhook')
 
 // This two following lines ensures that every incomming request is parsed to json automatically
 app.use(bodyParser.urlencoded({ extended: 'true' }))
@@ -21,5 +22,5 @@ app.use((req, res, next) => {
 app.post('/webhook', webhook)
 
 // The server is now listening on the port 8080
-app.listen(8080)
-console.log('info', `server listening on port 8080`)
+app.listen(config.PORT)
+console.log('info', `server listening on port ${config.PORT}`)
